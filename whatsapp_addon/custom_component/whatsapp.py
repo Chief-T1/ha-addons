@@ -7,7 +7,7 @@ whatsapp_port = os.getenv('WHATSAPP_PORT')
 if whatsapp_port is None :
 	HOST = f'{whatsapp_hostname}:3000/'
 else :
-	HOST = f'http://{whatsapp_hostname}:{whatsapp_port}/'
+	HOST = f'{whatsapp_hostname}:{whatsapp_port}/'
 
 print (HOST, "is the hostname used in the python script") 
 

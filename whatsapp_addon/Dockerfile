@@ -1,4 +1,3 @@
-ARG BUILD_FROM
 FROM ghcr.io/home-assistant/aarch64-base
 
 RUN apk add --no-cache git npm

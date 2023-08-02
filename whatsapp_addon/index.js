@@ -43,7 +43,7 @@ const clients = {};
 const onReady = (key) => {
   logger.info(key, "client is ready.");
   axios.post(
-    `https://${apiUrl}/api/services/persistent_notification/dismiss`,
+    `http://${apiUrl}/api/services/persistent_notification/dismiss`,
     {
       notification_id: `whatsapp_addon_qrcode_${key}`,
     },
@@ -66,7 +66,7 @@ const onQr = (qr, key) => {
   code.on("readable", function () {
     var img_string = code.read().toString("base64");
     axios.post(
-      `https://${apiUrl}/api/services/persistent_notification/create`,
+      `http://${apiUrl}/api/services/persistent_notification/create`,
       {
         title: `Whatsapp QRCode (${key})`,
         message: `Please scan the following QRCode for **${key}** client... ![QRCode](data:image/png;base64,${img_string})`,
@@ -83,7 +83,7 @@ const onQr = (qr, key) => {
 
 const onMsg = (msg, key) => {
   axios.post(
-    `https://${apiUrl}/api/events/new_whatsapp_message`,
+    `http://${apiUrl}/api/events/new_whatsapp_message`,
     { clientId: key, ...msg },
     {
       headers: {
@@ -96,7 +96,7 @@ const onMsg = (msg, key) => {
 
 const onPresenceUpdate = (presence, key) => {
   axios.post(
-    `https://${apiUrl}/api/events/whatsapp_presence_update`,
+    `http://${apiUrl}/api/events/whatsapp_presence_update`,
     { clientId: key, ...presence },
     {
       headers: {
